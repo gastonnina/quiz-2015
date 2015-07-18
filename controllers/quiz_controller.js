@@ -19,7 +19,8 @@ exports.index = function(req, res) {
     sql={order:'pregunta ASC'};
     if(req.query.search!=undefined){
         search = '%' + req.query.search.replace(/\s+/g,'%') + '%';
-        sql.where=['pregunta like ?',search];
+//        sql.where=['pregunta like ?',search];
+        sql.where=['lower(pregunta) like lower(?)',search];// agregado porque en postgres no buscaba bien
         
     }
     
