@@ -1,3 +1,8 @@
+<form action="">
+<input type="text" name="search">
+<input type="submit" placeholder="Introduce una palabra a buscar" value="Buscar">
+</form>
+<h2><%= textoBus %></h2>
 <table>
   <% var i; for (i=0; i < quizes.length; i++) { %>        
      <tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr> 

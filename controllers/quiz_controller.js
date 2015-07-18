@@ -14,9 +14,32 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 exports.index = function(req, res) {
-    models.Quiz.findAll().then(
+    var textoBus='Todos',
+            search,
+    sql={order:'pregunta ASC'};
+    if(req.query.search!=undefined){
+        search = '%' + req.query.search.replace(/\s+/g,'%') + '%';
+        sql.where=['pregunta like ?',search];
+        
+    }
+    
+    models.Quiz.findAll(sql).then(
     function(quizes) {
-      res.render('quizes/index', { quizes: quizes});
+        if(req.query.search!=undefined){
+          switch(quizes.length){
+              case 0:
+                textoBus='Ningun Registro encontrado';
+              break;
+              case 1:
+                textoBus='1 Registro encontrado';
+                break;
+              default:
+                  textoBus=quizes.length+' Registros encontrados';
+                break;
+          }
+          textoBus+=' filtrando por "'+req.query.search+'"';
+      }
+      res.render('quizes/index', { quizes: quizes, textoBus:textoBus});
     }
   ).catch(function(error) { next(error);})
 };
