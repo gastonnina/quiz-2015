@@ -1,0 +1,141 @@
+ <!-- Colored Headers -->
+<div class="block-header">
+    <h2>Índice temático <small>Categorias de Preguntas</small></h2>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header bgm-cyan">
+                <h2><i class="md md-straighten"></i> Ciencia <small>Preguntas relacionadas con ciencias...</small></h2>
+            </div>
+
+            <div class="table-responsive">
+                <table id="data-table-basic1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th data-column-id="nro">Nro</th>
+                            <th data-column-id="pregunta">Pregunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i; for (i=0; i < tema['ciencia'].length; i++) { %>        
+                        <tr>
+                            <td><%= (i+1) %></td>
+                            <td><a href="quizes/<%= tema['ciencia'][i].id %>"><%= tema['ciencia'][i].pregunta %></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header bgm-red">
+                <h2><i class="md md-memory"></i> Tecnología <small>preguntas del android, web, html, etc...</small></h2>
+            </div>
+
+           <div class="table-responsive">
+                <table id="data-table-basic1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th data-column-id="nro">Nro</th>
+                            <th data-column-id="pregunta">Pregunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i; for (i=0; i < tema['tecnologia'].length; i++) { %>        
+                        <tr>
+                            <td><%= (i+1) %></td>
+                            <td><a href="quizes/<%= tema['tecnologia'][i].id %>"><%= tema['tecnologia'][i].pregunta %></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header bgm-orange">
+                 <h2><i class=" md-public"></i> Humanidades <small>Conocimiento general...</small></h2>
+            </div>
+
+            <div class="table-responsive">
+                <table id="data-table-basic1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th data-column-id="nro">Nro</th>
+                            <th data-column-id="pregunta">Pregunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i; for (i=0; i < tema['humanidades'].length; i++) { %>        
+                        <tr>
+                            <td><%= (i+1) %></td>
+                            <td><a href="quizes/<%= tema['humanidades'][i].id %>"><%= tema['humanidades'][i].pregunta %></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header bgm-green">
+                <h2><i class="md-keyboard-alt"></i> Ocio <small>Tv show, cine, musica, etc...</small></h2>
+            </div>
+
+            <div class="table-responsive">
+                <table id="data-table-basic1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th data-column-id="nro">Nro</th>
+                            <th data-column-id="pregunta">Pregunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i; for (i=0; i < tema['ocio'].length; i++) { %>        
+                        <tr>
+                            <td><%= (i+1) %></td>
+                            <td><a href="quizes/<%= tema['ocio'][i].id %>"><%= tema['ocio'][i].pregunta %></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header bgm-purple">
+                <h2><i class=" md-blur-on"></i> Otros <small>Si tienes dudas sobre que categoria poner tu pregunta deberia ir aqui...</small></h2>
+                </div>
+
+            <div class="table-responsive">
+                <table id="data-table-basic1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th data-column-id="nro">Nro</th>
+                            <th data-column-id="pregunta">Pregunta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i; for (i=0; i < tema['ocio'].length; i++) { %>        
+                        <tr>
+                            <td><%= (i+1) %></td>
+                            <td><a href="quizes/<%= tema['ocio'][i].id %>"><%= tema['ocio'][i].pregunta %></a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

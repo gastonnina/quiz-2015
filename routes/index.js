@@ -7,6 +7,27 @@ var quizController = require('../controllers/quiz_controller');
 router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors:[] });
 });
+router.get('/temas', function(req, res) {
+    var models = require('../models/models.js');
+    models.Quiz.findAll().then(
+        function(quizes) {
+        var quizByCat={
+        ocio:[],
+        ciencia:[],
+        tecnologia:[],
+        humanidades:[],
+        otro:[]
+        };
+        var j;
+        for (j=0;j<quizes.length;j++){
+        quizByCat[quizes[j].tema].push({id:quizes[j].id,pregunta:quizes[j].pregunta});
+        }
+    console.dir(quizByCat);
+        res.render('temas', { tema:quizByCat, errors:[] });
+        }
+    );
+
+});
 
 // Autoload de comandos con :quizId
 router.param('quizId', quizController.load);  // autoload :quizId

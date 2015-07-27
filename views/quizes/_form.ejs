@@ -1,6 +1,25 @@
-<label for="preg" class="rem">Pregunta:</label>
-<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>" placeholder="Pregunta"/> <p>
-<label for="resp" class="rem">Respuesta:</label>
-<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>" placeholder="Respuesta"/> <p>
-<a href="/quizes"><button type="button">Cancelar</button></a>
-<input type="submit" value="Salvar">
+<div class="form-group">
+    <div class="fg-line">
+        <label for="tema">Tema</label>
+        <div class="select">
+            <select name="quiz[tema]" id="tema" class="form-control">
+                
+                 <% var i; for (i=0; i < temas.length; i++) { %>        
+                <option value="<%= temas[i].id %>" <% if (temas[i].id==quiz.tema) { %>selected="selected" <% } %>><%= temas[i].texto %></option>
+                <% } %>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="form-group fg-line">
+    <label for="preg">Pregunta</label>
+    <input type="text" class="form-control input-sm" id="preg" placeholder="Pregunta" name="quiz[pregunta]" value="<%= quiz.pregunta %>">
+</div>
+<div class="form-group fg-line">
+    <label for="resp">Repuesta</label>
+    <input type="text" class="form-control input-sm" id="resp" placeholder="Respuesta" name="quiz[respuesta]" value="<%= quiz.respuesta %>">
+</div>
+
+<a href="/quizes" class="btn btn-sm m-t-10">Cancelar</a>
+<button type="submit" class="btn btn-primary btn-sm m-t-10">Salvar</button>

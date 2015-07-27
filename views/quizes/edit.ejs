@@ -1,5 +1,11 @@
-Edite la pregunta <p>
+<div class="card">
+    <div class="card-header">
+        <h2>Editar pregunta <small>procure sea una pregunta especifica.</small></h2>
+    </div>
 
-<form method="post" action="/quizes/<%= quiz.id %>?_method=put" >      
-  <% include _form.ejs %>
-</form>
+    <div class="card-body card-padding">
+        <form role="form" method="post" action="/quizes/<%= quiz.id %>?_method=put" >
+        <% include _form.ejs %>
+        </form>
+    </div>
+</div>

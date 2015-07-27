@@ -1,22 +1,37 @@
+<div class="block-header">
+    <h2>Preguntas</h2>
+</div>
+<div class="card">
+    <div class="card-header bgm-bluegray">
+        <h2>Preguntas <small><%= textoBus %></small></h2>
+        <a class="btn bgm-red btn-float waves-effect waves-effect" href="/quizes/new"><i class="md md-add"></i></a>
+    </div>
+<!--
 <form action="">
 <input type="text" name="search">
 <input type="submit" placeholder="Introduce una palabra a buscar" value="Buscar">
 </form>
 <h2><%= textoBus %></h2>
-<table>
-    <% var i; for (i=0; i < quizes.length; i++) { %>        
+-->
+    <table id="data-table-command" class="table table-striped table-vmiddle">
+        <thead>
+            <tr>
+                <th data-column-id="id" data-type="numeric">ID</th>
+                <th data-column-id="pregunta">Pregunta</th>
+                <th data-column-id="tema">Tema</th>
+                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% var i; for (i=0; i < quizes.length; i++) { %>        
     <tr>
+        <td><%= quizes[i].id %></td>
         <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
-        <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
+        <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].tema %></a></td>
         <td>
-            <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
-                <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-                borrar
-                </button>
-            </form>
         </td>
     </tr>
     <% } %>
-</table>
-<p/>
-<a href="/quizes/new"><button type="button">Crear pregunta</button></a> 
+        </tbody>
+    </table>
+</div>

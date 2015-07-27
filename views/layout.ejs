@@ -1,49 +1,159 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8"><title> Preguntas </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel='stylesheet' 
-        type='text/css'
-        media='only screen and (min-width: 530px) and (min-device-width: 481px)'
-        href='/stylesheets/wide.css' />
-  <link rel='stylesheet'
-        type='text/css'
-        media='only screen and (max-width: 480px)' 
-        href='/stylesheets/smartphone.css' />
+    <head>
+        <meta charset="utf-8">
+        <title> Preguntas </title>
+        <!-- Vendor CSS -->
+        <link href="/vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/sweetalert/dist/sweetalert-override.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="/vendors/socicon/socicon.min.css" rel="stylesheet">
 
-</head> 
+        <!-- CSS -->
+        <link href="/css/app.min.1.css" rel="stylesheet">
+        <link href="/css/app.min.2.css" rel="stylesheet">
+    </head>
+    <body>
+    <header id="header">        
+        <ul class="header-inner">
+            <li id="menu-trigger" data-trigger="#sidebar">
+                <div class="line-wrap">
+                    <div class="line top"></div>
+                    <div class="line center"></div>
+                    <div class="line bottom"></div>
+                </div>
+            </li>
+            <li class="logo hidden-xs">
+                <a href="/">Quiz<span>: el juego de las preguntas</span></a>
+            </li>
+            <li class="pull-right">
+                <ul class="top-menu">
+                    <li id="toggle-width">
+                        <div class="toggle-switch">
+                            <input id="tw-switch" type="checkbox" hidden="hidden">
+                            <label for="tw-switch" class="ts-helper"></label>
+                        </div>
+                    </li>
+                    <li id="top-search">
+                        <a class="tm-search" href=""></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+            
+        <!-- Top Search Content -->
+        <div id="top-search-wrap">
+            <form action="/quizes">
+                <input type="text" name="search" placeholder="Introduce una palabra a buscar">
+            </form>
+            <i id="top-search-close">&times;</i>
+        </div>
+    </header>
+    <section id="main">
+        <aside id="sidebar">
+            <div class="sidebar-inner c-overflow">
+                <div class="profile-menu">
+                    <a href="">
+                        <div class="profile-pic">
+                            <img src="https://pbs.twimg.com/profile_images/283035486/Gas_400x400.jpg" alt="">
+                        </div>
 
-<body>
-<div id="page-wrap">
-  <header class="main" id="h1">
-    <h2>Quiz<span>: el juego de las preguntas</span></h2>
-  </header>
+                        <div class="profile-info">
+                            Gaston Nina
+                        </div>
+                    </a>
 
-  <nav class="main" id="n1" role="navigation">
-    <span><a href="/">Inicio</a></span>
-    <span><a href="/quizes">Preguntas</a></span>
-    <span><a href="/author">Créditos</a></span>
-  </nav>
+                </div>
 
-  <section class="main" id="s1">
-    <% if (errors.length) { %>
-        <span id='ErrorMsgs'>
-        Corregir errores:<br/>
-        <% for (var i in errors) { %>
-            <span> <%= errors[i].message %> </span><br/>
-        <% } %>
-        </span>
-    <% } %>
-    <div><%- body %></div>
-  </section>
+                <ul class="main-menu">
+                    <li><a href="/"><i class="md md-home"></i> Inicio</a></li>
+                    <li><a href="/temas"><i class="md md-menu"></i> Temas</a></li>
+                    <li><a href="/quizes"><i class="md md-list"></i> Preguntas</a></li>
+                    <li><a href="/author"><i class="md md-quick-contacts-dialer"></i> Creditos</a></li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+    <section id="content">
+        <div class="container">
+            <% if (errors.length) { %>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Corregir errores: <small>Surgieron los siguientes errores a contignuación.</small></h2>
+                </div>
+                <div class="card-body card-padding">
 
-  <footer class="main" id="f1">
-    <a href="http://es.wikipedia.org/wiki/Quiz">
-      ¿Que es un Quiz?</a><br />
-    <a href="https://github.com/gastonnina/quiz-2015">
-      https://github.com/gastonnina/quiz-2015</a>
-  </footer>
-</div>
-</body> 
+                    <% for (var i in errors) { %>
+                        <div role="alert" class="alert alert-danger"><%= errors[i].message %></div>
+                    <% } %>
+                </div>
+            </div>
+            <% } %>
+
+            <%- body %>
+        </div>
+    </section>
+    <footer id="footer">
+        @gastonnina
+
+        <ul class="f-menu">
+            <li><a href="http://es.wikipedia.org/wiki/Quiz" title="¿Que es un Quiz?"><i class="socicon socicon-wikipedia"></i>¿Que es un Quiz?</a></li>
+            <li><a href="https://github.com/gastonnina/quiz-2015" title="El código fuente esta en GITHUB"><i class="socicon socicon-github"></i>Código Fuente</a></li>
+        </ul>
+    </footer>
+<!-- Javascript Libraries -->
+        <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        <script src="/vendors/bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="/vendors/bower_components/Waves/dist/waves.min.js"></script>
+        <script src="/vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>  
+        <script src="/vendors/bootgrid/jquery.bootgrid.min.js"></script>
+        
+        <!-- Placeholder for IE9 -->
+        <!--[if IE 9 ]>
+            <script src="/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+        
+        <script src="/js/functions.js"></script>
+        <script src="/js/demo.js"></script>
+
+        <!-- Data Table -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                //Basic Example
+                $("#data-table-basic").bootgrid({
+                    css: {
+                        icon: 'md icon',
+                        iconColumns: 'md-view-module',
+                        iconDown: 'md-expand-more',
+                        iconRefresh: 'md-refresh',
+                        iconUp: 'md-expand-less'
+                    },
+                });
+                   
+                //Command Buttons
+                $("#data-table-command").bootgrid({
+                    css: {
+                        icon: 'md icon',
+                        iconColumns: 'md-view-module',
+                        iconDown: 'md-expand-more',
+                        iconRefresh: 'md-refresh',
+                        iconUp: 'md-expand-less'
+                    },
+                    formatters: {
+                        "commands": function(column, row) {
+                            return "<a href=\"/quizes/"+row.id+"/edit\" type=\"button\" class=\"btn btn-icon command-edit\" style=\"padding:7px;\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></a> " + 
+                                "<form method=\"post\" action=\"quizes/"+row.id+"?_method=delete\" style=\"display:inline-block\">"+
+"<button type=\"submit\" onClick=\"return confirm(\'Borrar: "+row.pregunta+"\');\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button>"+
+            "</form>";
+
+                        }
+                    }
+                });
+            });
+        </script>
+    </body> 
 </html>
