@@ -1,5 +1,15 @@
-<form method="get" action="/quizes/<%= quiz.id %>/answer">        
-  <%= quiz.pregunta %> <p>
-  <input type="text" name="respuesta" value="Responda aquí"/>
-  <input type="submit" value="Enviar">
-</form>
+<div class="card">
+    <div class="card-header bgm-blue">
+        <h2><%= quiz.pregunta %></h2>
+    </div>
+
+    <div class="card-body card-padding">
+        <form role="form" method="get" action="/quizes/<%= quiz.id %>/answer">        
+          <div class="form-group fg-line">
+            <label for="preg">Respuesta</label>
+            <input type="text" class="form-control input-sm" id="preg" placeholder="Pregunta" name="respuesta" value="" placeholder="Responda aquí">
+        </div>
+          <button type="submit" class="btn btn-primary btn-sm m-t-10">Enviar</button>
+        </form>
+    </div>
+</div>

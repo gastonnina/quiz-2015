@@ -1,4 +1,20 @@
+<div class="card">
+    <div class="card-header <% if(respuesta=='Correcto') { %>bgm-green<% } else { %>bgm-red<% } %>">
+        <h2><%= respuesta %></h2>
+    </div>
+
+    <div class="card-body card-padding">
+        <p><% if(respuesta=='Correcto') { %>
+            Buen trabajo, se nota que estudiaste!
+            <% } else { %>
+            Lo siento tu respues no parece ser correcta intenta de nuevo
+            <% } %>
+            </p>
+            <a href="/quizes/<%= quiz.id %>" class="btn btn-sm m-t-10">Volver</a>
+    </div>
+</div>
+
 <p>
-    <%= respuesta %>
-    <a href="/quizes/<%= quiz.id %>">Volver</a>
+    
+    
 </p>

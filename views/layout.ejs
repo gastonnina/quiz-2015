@@ -145,7 +145,8 @@
                     },
                     formatters: {
                         "commands": function(column, row) {
-                            return "<a href=\"/quizes/"+row.id+"/edit\" type=\"button\" class=\"btn btn-icon command-edit\" style=\"padding:7px;\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></a> " + 
+                            return "<a href=\"/quizes/"+row.id+"\" type=\"button\" class=\"btn btn-icon command-edit\" style=\"padding:7px;\" data-row-id=\"" + row.id + "\"><span class=\"md md-arrow-forward\"></span></a> " + 
+                                "<a href=\"/quizes/"+row.id+"/edit\" type=\"button\" class=\"btn btn-icon command-edit\" style=\"padding:7px;\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></a> " + 
                                 "<form method=\"post\" action=\"quizes/"+row.id+"?_method=delete\" style=\"display:inline-block\">"+
 "<button type=\"submit\" onClick=\"return confirm(\'Borrar: "+row.pregunta+"\');\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button>"+
             "</form>";
