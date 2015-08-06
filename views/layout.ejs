@@ -38,8 +38,10 @@
                     <li id="top-search">
                         <a class="tm-search" href=""></a>
                     </li>
+                    
                 </ul>
             </li>
+            
         </ul>
             
         <!-- Top Search Content -->
@@ -60,7 +62,11 @@
                         </div>
 
                         <div class="profile-info">
-                            Gaston Nina
+                            <%if(!session.user){%>
+                            Invitado de Gaston Nina
+                            <%}else{%>
+                                usuario <%=session.user.username%>
+                            <%}%>       
                         </div>
                     </a>
 
@@ -71,6 +77,13 @@
                     <li><a href="/temas"><i class="md md-menu"></i> Temas</a></li>
                     <li><a href="/quizes"><i class="md md-list"></i> Preguntas</a></li>
                     <li><a href="/author"><i class="md md-quick-contacts-dialer"></i> Creditos</a></li>
+                    <li>
+                        <%if(!session.user){%>
+                            <a title="Login" href="/login"><i class="md-lock"></i> Login</a>
+                        <%}else{%>
+                            <a title="Logout" href="/logout"><i class="md-exit-to-app"></i> Logout</a>
+                        <%}%>
+                    </li>
                 </ul>
             </div>
         </aside>
@@ -95,13 +108,7 @@
         </div>
     </section>
     <footer id="footer">
-        @gastonnina
-<%if(!session.user){%>
-      <span class="right"><a href="/login">Login</a></span>
-    <%}else{%>
-      <span class="right"> <%=session.user.username%> <a href="/logout">Logout</a></span>
-    <%}%>
-    
+        @gastonnina    
         <ul class="f-menu">
             <li><a href="http://es.wikipedia.org/wiki/Quiz" title="¿Que es un Quiz?"><i class="socicon socicon-wikipedia"></i>¿Que es un Quiz?</a></li>
             <li><a href="https://github.com/gastonnina/quiz-2015" title="El código fuente esta en GITHUB"><i class="socicon socicon-github"></i>Código Fuente</a></li>
@@ -151,11 +158,13 @@
                     formatters: {
                         "commands": function(column, row) {
                             return "<a href=\"/quizes/"+row.id+"\" type=\"button\" class=\"btn btn-icon command-edit\" style=\"padding:7px;\" data-row-id=\"" + row.id + "\"><span class=\"md md-arrow-forward\"></span></a> " + 
+                            <%if(session.user){%>
                                 "<a href=\"/quizes/"+row.id+"/edit\" type=\"button\" class=\"btn btn-icon command-edit\" style=\"padding:7px;\" data-row-id=\"" + row.id + "\"><span class=\"md md-edit\"></span></a> " + 
                                 "<form method=\"post\" action=\"quizes/"+row.id+"?_method=delete\" style=\"display:inline-block\">"+
-"<button type=\"submit\" onClick=\"return confirm(\'Borrar: "+row.pregunta+"\');\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button>"+
-            "</form>";
-
+                                    "<button type=\"submit\" onClick=\"return confirm(\'Borrar: "+row.pregunta+"\');\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"md md-delete\"></span></button>"+
+                                "</form>"+
+                            <%}%>
+                                "";
                         }
                     }
                 });

@@ -4,7 +4,9 @@
 <div class="card">
     <div class="card-header bgm-bluegray">
         <h2>Preguntas <small><%= textoBus %></small></h2>
+<%if(session.user){%>
         <a class="btn bgm-red btn-float waves-effect waves-effect" href="/quizes/new"><i class="md md-add"></i></a>
+<%}%>
     </div>
 <!--
 <form action="">

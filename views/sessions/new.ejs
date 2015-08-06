@@ -1,19 +1,22 @@
-<h2>Login</h2>
 
-<form method='POST' action='/login'>
+        <div class="lc-block toggled" id="l-login">
+    <form method='POST' action='/login'>
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="md md-person"></i></span>
+                <div class="fg-line">
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Username">
+                </div>
+            </div>
 
-  <div class="field">
-    <label for="login">Login:</label><br />
-    <input type="text" id="login" name="login" size="30" />
-  </div>
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="md md-accessibility"></i></span>
+                <div class="fg-line">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                </div>
+            </div>
 
-  <div class="field">
-    <label for="password">Password:</label><br />
-    <input type="password" id="password" name="password" size="30" />
-  </div>
 
-  <div class="actions">
-    <input name="commit" type="submit" value="Login" />
-  </div>
-
-</form>
+            <button class="btn btn-login btn-danger btn-float" name="commit" type="submit"><i class="md md-arrow-forward"></i></button>
+</form>    
+    </div>
+    
