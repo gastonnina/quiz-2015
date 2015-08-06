@@ -44,6 +44,7 @@ router.get('/logout', sessionController.destroy); // destruir sesión
 router.get('/quizes',                      quizController.index);
 router.get('/quizes/:quizId(\\d+)',        quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
+router.get('/quizes/statistics',           quizController.statistics);
 router.get('/quizes/new',                  sessionController.loginRequired, quizController.new);
 router.post('/quizes/create',              sessionController.loginRequired, quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit',   sessionController.loginRequired, quizController.edit);

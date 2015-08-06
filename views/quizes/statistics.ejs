@@ -1,0 +1,70 @@
+<div class="block-header">
+    <h2>Estadisticas <small>es mejor verlo en graficos.</small></h2>
+</div>
+ <div class="row">
+    <div class="col-md-4 col-sm-6">
+        <div class=" bgm-teal" id="site-visits">
+            <div class="p-20">
+                <small>Total de Preguntas</small>
+                <h3 class="m-0 f-400"><%=totalPregunta%></h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class=" bgm-lime" id="site-visits">
+            <div class="p-20">
+                <small>Total de Comentarios</small>
+                <h3 class="m-0 f-400"><%=totalComentario%></h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+        <div class=" bgm-pink" id="site-visits">
+            <div class="p-20">
+                <small>Medio de Comentarios por pregunta</small>
+                <h3 class="m-0 f-400"><%=totalComentarioAVG%></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-header">
+</div>
+<script>
+    var pieData = [
+        {data: <%=totalPreguntaCon%>, color: '#F44336', label: 'Con Comentarios'},
+        {data: <%=totalPreguntaSin%>, color: '#03A9F4', label: 'Sin Comentarios'},
+    ];
+    var pieData2 = [
+        {data: <%=quizByCat['ocio'].length%>, color: '#F44336', label: 'Ocio'},
+        {data: <%=quizByCat['ciencia'].length%>, color: '#03A9F4', label: 'Ciencia'},
+        {data: <%=quizByCat['tecnologia'].length%>, color: '#03A222', label: 'Tecnología'},
+        {data: <%=quizByCat['humanidades'].length%>, color: '#AAAAF4', label: 'Humanidades'},
+        {data: <%=quizByCat['otro'].length%>, color: '#DDA9FF', label: 'Otro'},
+    ];
+</script>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2>Preguntas Con y Sin Comentarios</h2>
+            </div>
+
+            <div class="card-body card-padding">
+                <div id="pie-chart" class="flot-chart-pie"></div>
+                <div class="flc-pie hidden-xs"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2>Total Preguntas por Categoría</h2>
+            </div>
+
+            <div class="card-body card-padding">
+                <div id="pie-chart2" class="flot-chart-pie"></div>
+                <div class="flc-pie2 hidden-xs"></div>
+            </div>
+        </div>
+    </div>
+</div>

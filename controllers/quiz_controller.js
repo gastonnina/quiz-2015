@@ -142,3 +142,50 @@ exports.destroy = function(req, res) {
 };
 
 //  console.log("req.quiz.id: " + req.quiz.id);
+
+// GET statistics
+exports.statistics = function(req, res) {
+    
+    models.Quiz.findAll({
+        include: [{model: models.Comment}]
+    }
+            ).then(
+        function (quizes) {
+            var totalPregunta=0,
+                totalComentario=0,
+                totalComentarioAVG=0,
+                totalPreguntaCon=0,
+                totalPreguntaSin=0;
+            var quizByCat = {
+                ocio: [],
+                ciencia: [],
+                tecnologia: [],
+                humanidades: [],
+                otro: []
+            };
+            var j;
+            for (j = 0; j < quizes.length; j++) {
+                totalPregunta++;
+                if(quizes[j].Comments.length){
+                    totalPreguntaCon++;
+                    totalComentario+=quizes[j].Comments.length;
+                }
+                quizByCat[quizes[j].tema].push({id: quizes[j].id, pregunta: quizes[j].pregunta});
+            }
+            totalComentarioAVG = totalComentario / totalPregunta;
+            totalComentarioAVG=parseFloat(totalComentarioAVG).toFixed(2);
+            totalPreguntaSin=totalPregunta-totalPreguntaCon;
+//            console.dir(quizByCat);
+//            res.render('temas', {tema: quizByCat, errors: []});
+      
+      res.render('quizes/statistics', {
+          totalPregunta:totalPregunta,
+          totalPreguntaCon:totalPreguntaCon,
+          totalPreguntaSin:totalPreguntaSin,
+          totalComentario:totalComentario, 
+          totalComentarioAVG:totalComentarioAVG, 
+          quizByCat:quizByCat, 
+          errors:[]});
+    }
+  ).catch(function(error) { next(error)});
+};
