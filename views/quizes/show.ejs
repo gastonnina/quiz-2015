@@ -11,11 +11,30 @@
         </div>
           <button type="submit" class="btn btn-primary btn-sm m-t-10">Enviar</button>
         </form>
-<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header ch-alt m-b-20">
+        <h2>Comentarios <small>Todos los comentarios sobre la pregunta</small></h2>
+        <a title="Nuevo Comentario" href="/quizes/<%= quiz.id %>/comments/new" class="btn bgm-cyan btn-float"><i class="md md-add"></i></a>
+    </div>
 
-<p><strong>Comentarios:</strong></p>
-<%for(index in quiz.Comments){%>
-	<p>- <%=quiz.Comments[index].texto%></p>
-<%}%>
+    <div class="card-body">
+        <div class="listview">
+            <%for(index in quiz.Comments){%>
+            <a class="lv-item" href="">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="lv-img-sm" src="/img/profile-pics/4.jpg" alt="">
+                    </div>
+                    <div class="media-body">
+                        <div class="lv-title">Bill Phillips</div>
+                        <small class="lv-small"><%=quiz.Comments[index].texto%></small>
+                    </div>
+                </div>
+            </a>
+            <%}%>            
+      <!--      <a class="lv-footer" href="">View All</a>-->
+        </div>
     </div>
 </div>

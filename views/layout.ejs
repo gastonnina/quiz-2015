@@ -96,7 +96,12 @@
     </section>
     <footer id="footer">
         @gastonnina
-
+<%if(!session.user){%>
+      <span class="right"><a href="/login">Login</a></span>
+    <%}else{%>
+      <span class="right"> <%=session.user.username%> <a href="/logout">Logout</a></span>
+    <%}%>
+    
         <ul class="f-menu">
             <li><a href="http://es.wikipedia.org/wiki/Quiz" title="¿Que es un Quiz?"><i class="socicon socicon-wikipedia"></i>¿Que es un Quiz?</a></li>
             <li><a href="https://github.com/gastonnina/quiz-2015" title="El código fuente esta en GITHUB"><i class="socicon socicon-github"></i>Código Fuente</a></li>
