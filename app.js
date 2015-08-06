@@ -29,6 +29,21 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// MW para auto log out
+app.use(function(req, res, next){
+    var expire = 60*1000*2; // 2 minus de session
+    var now = new Date().getTime();
+
+    if(req.session && req.session.ultimoAcceso) {
+    var lifetime = now - req.session.ultimoAcceso;
+        if (expire <= lifetime){
+            delete req.session.user;
+        }
+    }
+    req.session.ultimoAcceso = now;
+    next();
+});
+
 // Helpers dinamicos:
 app.use(function (req, res, next) {
 
