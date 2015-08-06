@@ -15,7 +15,7 @@
 </div>
 <div class="card">
     <div class="card-header ch-alt m-b-20">
-        <h2>Comentarios <small>Todos los comentarios sobre la pregunta</small></h2>
+        <h2>Comentarios <small>Considere que sus comentarios seran moderados por usuarios autentificados. Por lo cual no se mostraran directamente</small></h2>
         <a title="Nuevo Comentario" href="/quizes/<%= quiz.id %>/comments/new" class="btn bgm-cyan btn-float"><i class="md md-add"></i></a>
     </div>
 
@@ -23,18 +23,18 @@
         <div class="listview">
             <%for(index in quiz.Comments){%>
         	<%if(quiz.Comments[index].publicado || session.user){%>
-                    <a class="lv-item" href="">
+                    <a class="lv-item animated bounceInRight" href="">
                         <div class="media">
                             <div class="pull-left">
                                 <img class="lv-img-sm" src="/img/profile-pics/4.jpg" alt="">
                             </div>
-                            <div class="pull-right">
                             <%if(session.user && !quiz.Comments[index].publicado){%>
+                            <div class="pull-right">
                                 <form action="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
-				                <button class="btn btn-default bgm-lime btn-icon-text waves-effect" type="submit"><i class="md md-check"></i> Publicar</button>
+				                    <button class="btn btn-default bgm-lime btn-icon-text waves-effect" type="submit"><i class="md md-check"></i> Publicar</button>
                                 </form>
-                            <%}%>
                             </div>
+                            <%}%>
                             <div class="media-body">
                                 <div class="lv-title">Bill Phillips</div>
                                 <small class="lv-small"><%=quiz.Comments[index].texto%></small>

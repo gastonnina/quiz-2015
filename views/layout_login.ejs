@@ -4,9 +4,11 @@
         <meta charset="utf-8">
         <title> Preguntas </title>
         <!-- Vendor CSS -->
-        <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
-        <link href="vendors/bower_components/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet">
-            
+                <link href="/vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/sweetalert/dist/sweetalert-override.min.css" rel="stylesheet">
+        <link href="/vendors/bower_components/material-design-iconic-font/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="/vendors/socicon/socicon.min.css" rel="stylesheet">            
         <!-- CSS -->
         <link href="css/app.min.1.css" rel="stylesheet">
         <link href="css/app.min.2.css" rel="stylesheet">
@@ -26,7 +28,7 @@
 <!-- Javascript Libraries -->
         <script src="/vendors/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        
+        <script src="/vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>  
         <script src="/vendors/bower_components/Waves/dist/waves.min.js"></script>
         
         <!-- Placeholder for IE9 -->
@@ -35,5 +37,14 @@
         <![endif]-->
         
         <script src="/js/functions.js"></script>
+        <% if (errors.length) { %>
+        <script>
+            var cadErr='';
+            <% for (var i in errors) { %>
+                        cadErr+='<%= errors[i].message %>';
+                    <% } %>
+        swal("Corregir errores!", cadErr, "warning")
+        </script>
+        <% } %>
     </body> 
 </html>
