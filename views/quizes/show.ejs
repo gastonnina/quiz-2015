@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card animated bounceIn" >
     <div class="card-header bgm-blue">
         <h2><%= quiz.pregunta %></h2>
     </div>
 
     <div class="card-body card-padding">
-        <form role="form" method="get" action="/quizes/<%= quiz.id %>/answer">        
+        <form role="form" method="get"  action="/quizes/<%= quiz.id %>/answer">        
           <div class="form-group fg-line">
             <label for="preg">Respuesta</label>
             <input type="text" class="form-control input-sm" id="preg" placeholder="Pregunta" name="respuesta" value="" placeholder="Responda aquí">
@@ -22,17 +22,27 @@
     <div class="card-body">
         <div class="listview">
             <%for(index in quiz.Comments){%>
-            <a class="lv-item" href="">
-                <div class="media">
-                    <div class="pull-left">
-                        <img class="lv-img-sm" src="/img/profile-pics/4.jpg" alt="">
-                    </div>
-                    <div class="media-body">
-                        <div class="lv-title">Bill Phillips</div>
-                        <small class="lv-small"><%=quiz.Comments[index].texto%></small>
-                    </div>
-                </div>
-            </a>
+        	<%if(quiz.Comments[index].publicado || session.user){%>
+                    <a class="lv-item" href="">
+                        <div class="media">
+                            <div class="pull-left">
+                                <img class="lv-img-sm" src="/img/profile-pics/4.jpg" alt="">
+                            </div>
+                            <div class="pull-right">
+                            <%if(session.user && !quiz.Comments[index].publicado){%>
+                                <form action="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish">
+				                <button class="btn btn-default bgm-lime btn-icon-text waves-effect" type="submit"><i class="md md-check"></i> Publicar</button>
+                                </form>
+                            <%}%>
+                            </div>
+                            <div class="media-body">
+                                <div class="lv-title">Bill Phillips</div>
+                                <small class="lv-small"><%=quiz.Comments[index].texto%></small>
+                            </div>
+                            
+                        </div>
+                    </a>
+                <%}%>               
             <%}%>            
       <!--      <a class="lv-footer" href="">View All</a>-->
         </div>
