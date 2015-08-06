@@ -11,6 +11,9 @@ El proyecto quiz es parte del curso de  **Miriadax**[^miriadax]. [javascript Nod
  - Gaston Nina
  - Juan Quemada
 
+<i class="icon-eye"></i> DEMO
+-------------
+Puedes encontrar el sitio funcional en heroku [https://gastonnina-quiz-2015.herokuapp.com/](https://gastonnina-quiz-2015.herokuapp.com/)
 <i class="icon-download"></i> Instalación
 -------------
 
